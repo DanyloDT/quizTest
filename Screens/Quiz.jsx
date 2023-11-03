@@ -6,7 +6,6 @@ import {
   Modal,
   TouchableOpacity,
   Button,
-  // Button,
 } from "react-native";
 import questionsData from "../components/questions.json";
 import { saveQuizResults } from "../components/SaveQuizResults";
@@ -20,7 +19,7 @@ export const Quiz = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [incorrectAnswersCount, setIncorrectAnswersCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
-  console.log(selectedAnswer);
+
   const handleAnswerSelection = (answer) => {
     if (selectedAnswer === null) {
       const currentQuestion = questionsData.questions[currentQuestionIndex];
