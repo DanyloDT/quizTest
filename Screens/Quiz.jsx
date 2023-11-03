@@ -34,7 +34,7 @@ export const Quiz = () => {
     }
   };
 
-  const nextQuestion = () => {
+  const nextQuestion = async () => {
     if (selectedAnswer !== null) {
       setSelectedAnswer(null);
       setIsAnswerCorrect(false);

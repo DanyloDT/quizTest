@@ -1,4 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 export const saveQuizResults = async (
   correctAnswersCount,
@@ -20,6 +22,7 @@ export const saveQuizResults = async (
     parsedResults.push(resultEntry);
 
     await AsyncStorage.setItem("quizResults", JSON.stringify(parsedResults));
+    await addDoc(collection(db, "results"), resultEntry);
   } catch (error) {
     console.error("Помилка збереження результатів квізу:", error);
   }
