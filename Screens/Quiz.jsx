@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Modal, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  TouchableOpacity,
+  Button,
+  // Button,
+} from "react-native";
 import questionsData from "../components/questions.json";
 import { saveQuizResults } from "../components/SaveQuizResults";
 import { QuizResults } from "../components/QuizResults";
@@ -89,7 +97,11 @@ export const Quiz = () => {
                 <TouchableOpacity
                   key={index}
                   onPress={() => handleAnswerSelection(answer)}
-                  style={styles.answer}
+                  style={
+                    selectedAnswer === answer
+                      ? styles.selectedAnswer
+                      : styles.answer
+                  }
                 >
                   <Text style={styles.text}>{answer}</Text>
                 </TouchableOpacity>
@@ -108,13 +120,12 @@ export const Quiz = () => {
                 : "Неправильна відповідь."}
             </Text>
           )}
-          <TouchableOpacity
+
+          <Button
+            title="Наступне питання"
             onPress={nextQuestion}
             disabled={selectedAnswer === null}
-            style={styles.button}
-          >
-            <Text style={styles.text}>Наступне питання</Text>
-          </TouchableOpacity>
+          />
         </>
       )}
     </View>
@@ -144,7 +155,12 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 10,
   },
-  selectedAnswer: {},
+  selectedAnswer: {
+    minWidth: 60,
+    backgroundColor: "#0000ff",
+    padding: 8,
+    borderRadius: 10,
+  },
   correctAnswer: {
     color: "green",
   },
